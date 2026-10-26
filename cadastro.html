@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Criar conta | Nossa Vitrine</title>
+  <meta name="description" content="Crie sua conta na Nossa Vitrine.">
+  <meta name="theme-color" content="#147a43">
+
+  <style>
+    :root {
+      --green: #147a43;
+      --green-dark: #0b5730;
+      --light: #eaf6ee;
+      --background: #f5f7f5;
+      --text: #202923;
+      --muted: #68736b;
+      --border: #dce5de;
+      --white: #ffffff;
+      --error: #b42318;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      padding: 10px;
+      background: var(--green-dark);
+      color: white;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      color: var(--green);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    .logo span {
+      color: var(--text);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    main {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 38px 16px 50px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 470px;
+      padding: 32px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 8px 28px rgba(25, 65, 35, 0.06);
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 16px;
+      border-radius: 14px;
+      background: var(--light);
+      font-size: 27px;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      font-size: 29px;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .intro {
+      margin-bottom: 25px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 12px;
+      border: 1px solid #cbd6cd;
+      border-radius: 8px;
+      background: white;
+      color: var(--text);
+      font: inherit;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: 3px solid #c8ead3;
+      border-color: var(--green);
+    }
+
+    .password-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .password-row input {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .show-password {
+      padding: 0 11px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--light);
+      color: var(--green-dark);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .help {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .terms {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin: 19px 0;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .terms input {
+      width: 17px;
+      height: 17px;
+      min-height: 17px;
+      margin-top: 3px;
+      flex-shrink: 0;
+      accent-color: var(--green);
+    }
+
+    .submit {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: var(--green);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .submit:hover {
+      background: var(--green-dark);
+    }
+
+    .message {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      background: var(--light);
+      color: var(--green-dark);
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .message.error {
+      background: #fff0ef;
+      color: var(--error);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .login {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    footer {
+      padding: 22px 15px;
+      background: #13291c;
+      color: white;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #a9e7ba;
+    }
+
+    @media (max-width: 520px) {
+      .header-inner {
+        justify-content: center;
+        padding: 16px;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 12px;
+      }
+
+      main {
+        padding: 24px 12px 35px;
+      }
+
+      .card {
+        padding: 24px 18px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    Bem-vindo à Nossa Vitrine!
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="index.html">
+        Nossa <span>Vitrine</span>
+      </a>
+
+      <nav aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="titulo-cadastro">
+      <div class="icon" aria-hidden="true">👤</div>
+
+      <h1 id="titulo-cadastro">Crie sua conta</h1>
+
+      <p class="intro">
+        Preencha seus dados para começar na Nossa Vitrine.
+      </p>
+
+      <form id="cadastroForm">
+        <div class="field">
+          <label for="nome">Nome completo</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Digite seu nome"
+            autocomplete="name"
+            minlength="2"
+            maxlength="100"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="voce@exemplo.com"
+            autocomplete="email"
+            maxlength="254"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="senha">Criar senha</label>
+          <div class="password-row">
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              placeholder="Mínimo de 8 caracteres"
+              autocomplete="new-password"
+              minlength="8"
+              maxlength="128"
+              required
+            >
+            <button
+              class="show-password"
+              type="button"
+              id="mostrarSenha"
+              aria-controls="senha"
+              aria-pressed="false"
+            >
+              Mostrar
+            </button>
+          </div>
+          <p class="help">
+            Use pelo menos 8 caracteres e evite senhas fáceis de adivinhar.
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="confirmarSenha">Confirmar senha</label>
+          <input
+            type="password"
+            id="confirmarSenha"
+            name="confirmarSenha"
+            placeholder="Digite a senha novamente"
+            autocomplete="new-password"
+            minlength="8"
+            maxlength="128"
+            required
+          >
+        </div>
+
+        <label class="terms" for="aceitarTermos">
+          <input
+            type="checkbox"
+            id="aceitarTermos"
+            name="aceitarTermos"
+            required
+          >
+          <span>
+            Li e concordo com os
+            <a href="termos.html">Termos de Uso</a>
+            e a
+            <a href="privacidade.html">Política de Privacidade</a>.
+          </span>
+        </label>
+
+        <button class="submit" type="submit">
+          Criar minha conta
+        </button>
+
+        <div
+          id="mensagem"
+          class="message"
+          role="status"
+          aria-live="polite"
+          hidden
+        ></div>
+      </form>
+
+      <div class="login">
+        Já tem uma conta?
+        <a href="login.html">Entrar</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 Nossa Vitrine.
+      <a href="index.html">Voltar à página inicial</a>
+    </p>
+  </footer>
+
+  <script>
+    "use strict";
+
+    const formulario = document.getElementById("cadastroForm");
+    const senha = document.getElementById("senha");
+    const confirmarSenha = document.getElementById("confirmarSenha");
+    const mostrarSenha = document.getElementById("mostrarSenha");
+    const mensagem = document.getElementById("mensagem");
+
+    function mostrarMensagem(texto, erro = false) {
+      mensagem.textContent = texto;
+      mensagem.classList.toggle("error", erro);
+      mensagem.hidden = false;
+    }
+
+    mostrarSenha.addEventListener("click", function () {
+      const vaiMostrar = senha.type === "password";
+
+      senha.type = vaiMostrar ? "text" : "password";
+      confirmarSenha.type = vaiMostrar ? "text" : "password";
+
+      mostrarSenha.textContent = vaiMostrar ? "Ocultar" : "Mostrar";
+      mostrarSenha.setAttribute("aria-pressed", String(vaiMostrar));
+    });
+
+    formulario.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+
+      mensagem.hidden = true;
+
+      if (!formulario.checkValidity()) {
+        formulario.reportValidity();
+        return;
+      }
+
+      if (senha.value !== confirmarSenha.value) {
+        mostrarMensagem(
+          "As senhas não coincidem. Confira os dois campos.",
+          true
+        );
+
+        confirmarSenha.focus();
+        return;
+      }
+
+      mostrarMensagem(
+        "Os dados foram validados neste navegador, mas sua conta ainda não foi criada. É necessário conectar um serviço de autenticação para concluir o cadastro."
+      );
+    });
+  </script>
+</body>
+</html>

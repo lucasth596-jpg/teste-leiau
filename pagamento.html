@@ -1,0 +1,1009 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#087443">
+
+  <title>Pagamento | Nossa Vitrine</title>
+  <meta name="description" content="Confira o resumo do pedido e as informações de pagamento da Nossa Vitrine.">
+
+  <style>
+    :root {
+      --verde: #087443;
+      --verde-escuro: #065b35;
+      --verde-claro: #e8f6ed;
+      --fundo: #f5f7f6;
+      --texto: #202b25;
+      --cinza: #66736b;
+      --borda: #e3e9e5;
+      --branco: #ffffff;
+      --sombra: 0 5px 20px rgba(0,0,0,.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+      background: var(--fundo);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1050px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    /* CABEÇALHO */
+
+    .topbar {
+      background: var(--verde-escuro);
+      color: white;
+      text-align: center;
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+
+    .header {
+      background: white;
+      border-bottom: 1px solid var(--borda);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-main {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding-block: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--verde);
+      color: white;
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .brand-name {
+      color: var(--verde);
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      color: var(--cinza);
+      font-size: 9px;
+      letter-spacing: .4px;
+    }
+
+    .secure-label {
+      color: var(--verde);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .nav {
+      border-top: 1px solid #f0f2f0;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+      min-height: 44px;
+    }
+
+    .nav a {
+      padding: 10px 0;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav a:hover {
+      color: var(--verde);
+    }
+
+    /* TÍTULO */
+
+    .page-heading {
+      padding: 36px 0 25px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--verde);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .page-heading h1 {
+      margin-top: 7px;
+      font-size: clamp(27px, 4vw, 36px);
+      line-height: 1.2;
+    }
+
+    .page-heading p {
+      max-width: 550px;
+      margin: 10px auto 0;
+      color: var(--cinza);
+      font-size: 14px;
+    }
+
+    /* INDICADOR DE ETAPAS */
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 0 auto 28px;
+      color: var(--cinza);
+      font-size: 12px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .step-number {
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e7ece8;
+      font-weight: bold;
+    }
+
+    .step.active {
+      color: var(--verde);
+      font-weight: bold;
+    }
+
+    .step.active .step-number {
+      background: var(--verde);
+      color: white;
+    }
+
+    .step-line {
+      width: 32px;
+      height: 1px;
+      background: var(--borda);
+    }
+
+    /* LAYOUT PRINCIPAL */
+
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(280px, .9fr);
+      align-items: start;
+      gap: 24px;
+      padding-bottom: 48px;
+    }
+
+    .main-column {
+      display: grid;
+      gap: 20px;
+    }
+
+    .panel {
+      padding: 25px;
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 15px;
+      box-shadow: var(--sombra);
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .heading-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--verde-claro);
+      font-size: 20px;
+    }
+
+    .panel-heading h2 {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .panel-heading p {
+      margin-top: 3px;
+      color: var(--cinza);
+      font-size: 12px;
+    }
+
+    /* MÉTODOS DE PAGAMENTO */
+
+    .payment-options {
+      display: grid;
+      gap: 11px;
+    }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 15px;
+      border: 1px solid var(--borda);
+      border-radius: 11px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+
+    .payment-option:hover {
+      border-color: #8bc7a3;
+    }
+
+    .payment-option:has(input:checked) {
+      border-color: var(--verde);
+      background: #f5fbf7;
+    }
+
+    .payment-option input {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--verde);
+      flex-shrink: 0;
+    }
+
+    .method-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: #f1f5f2;
+      font-size: 22px;
+    }
+
+    .method-details {
+      flex: 1;
+    }
+
+    .method-details strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .method-details small {
+      display: block;
+      margin-top: 2px;
+      color: var(--cinza);
+      font-size: 11px;
+    }
+
+    .method-status {
+      color: var(--cinza);
+      font-size: 10px;
+      text-align: right;
+    }
+
+    /* INFORMAÇÕES DO MÉTODO */
+
+    .payment-details {
+      margin-top: 17px;
+      padding: 17px;
+      border-radius: 10px;
+      background: #f5f8f6;
+    }
+
+    .payment-details h3 {
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    .payment-details p {
+      color: var(--cinza);
+      font-size: 12px;
+    }
+
+    .payment-details label {
+      display: block;
+      margin: 12px 0 5px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .payment-details input {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid var(--borda);
+      border-radius: 8px;
+      background: white;
+      outline-color: var(--verde);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* RESUMO DO PEDIDO */
+
+    .summary-panel {
+      position: sticky;
+      top: 145px;
+    }
+
+    .summary-title {
+      margin-bottom: 20px;
+      font-size: 19px;
+    }
+
+    .product-summary {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .product-icon {
+      width: 60px;
+      height: 60px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: var(--verde-claro);
+      font-size: 27px;
+    }
+
+    .product-summary h3 {
+      font-size: 13px;
+    }
+
+    .product-summary p {
+      color: var(--cinza);
+      font-size: 11px;
+    }
+
+    .summary-lines {
+      display: grid;
+      gap: 12px;
+      padding: 18px 0;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .summary-line span:first-child {
+      color: var(--cinza);
+    }
+
+    .summary-line strong {
+      text-align: right;
+    }
+
+    .total-line {
+      padding-top: 16px;
+      border-top: 1px solid var(--borda);
+      font-size: 16px;
+    }
+
+    .total-line span:first-child {
+      color: var(--texto);
+      font-weight: bold;
+    }
+
+    .total-value {
+      color: var(--verde);
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .summary-note {
+      padding: 12px;
+      border-radius: 9px;
+      background: var(--verde-claro);
+      color: var(--verde-escuro);
+      font-size: 11px;
+    }
+
+    /* BOTÃO PRINCIPAL */
+
+    .primary-button {
+      display: block;
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      border: 0;
+      border-radius: 9px;
+      background: var(--verde);
+      color: white;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .primary-button:hover {
+      background: var(--verde-escuro);
+    }
+
+    .primary-button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    .secondary-link {
+      display: block;
+      margin-top: 15px;
+      color: var(--verde);
+      text-align: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .disclaimer {
+      margin-top: 13px;
+      color: var(--cinza);
+      text-align: center;
+      font-size: 10px;
+    }
+
+    /* AVISOS */
+
+    .notice {
+      display: none;
+      margin-top: 15px;
+      padding: 13px;
+      border: 1px solid #b9ddc5;
+      border-radius: 9px;
+      background: #f1faf4;
+      color: var(--verde-escuro);
+      font-size: 12px;
+    }
+
+    .notice.show {
+      display: block;
+    }
+
+    /* RODAPÉ */
+
+    .footer {
+      padding: 28px 0 18px;
+      background: #10251a;
+      color: white;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer p {
+      color: #c1d1c6;
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: #e1eee5;
+      font-size: 11px;
+    }
+
+    /* TABLETS E CELULARES */
+
+    @media (max-width: 760px) {
+      .header-main {
+        min-height: 70px;
+      }
+
+      .nav-inner {
+        gap: 18px;
+      }
+
+      .checkout-layout {
+        grid-template-columns: 1fr;
+        gap: 17px;
+      }
+
+      .summary-panel {
+        position: static;
+        grid-row: 1;
+      }
+
+      .page-heading {
+        padding-top: 27px;
+      }
+
+      .panel {
+        padding: 19px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: calc(100% - 26px);
+      }
+
+      .brand-logo {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+      }
+
+      .brand-name {
+        font-size: 18px;
+      }
+
+      .brand-subtitle {
+        font-size: 8px;
+      }
+
+      .secure-label {
+        font-size: 11px;
+      }
+
+      .nav-inner {
+        gap: 10px 18px;
+        padding-block: 8px;
+      }
+
+      .nav a {
+        font-size: 11px;
+      }
+
+      .steps {
+        gap: 7px;
+        font-size: 10px;
+      }
+
+      .step {
+        gap: 5px;
+      }
+
+      .step-number {
+        width: 23px;
+        height: 23px;
+      }
+
+      .step-line {
+        width: 15px;
+      }
+
+      .panel {
+        padding: 15px;
+        border-radius: 12px;
+      }
+
+      .panel-heading h2 {
+        font-size: 16px;
+      }
+
+      .payment-option {
+        gap: 9px;
+        padding: 11px 9px;
+      }
+
+      .method-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+      }
+
+      .method-details strong {
+        font-size: 12px;
+      }
+
+      .method-details small {
+        font-size: 10px;
+      }
+
+      .method-status {
+        font-size: 9px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    Nossa Vitrine • Informações claras para sua compra
+  </div>
+
+  <!-- CABEÇALHO -->
+  <header class="header">
+    <div class="container header-main">
+
+      <a href="index.html" class="brand">
+        <div class="brand-logo">N</div>
+        <div>
+          <div class="brand-name">Nossa Vitrine</div>
+          <div class="brand-subtitle">ENCONTRE TUDO EM UM SÓ LUGAR</div>
+        </div>
+      </a>
+
+      <div class="secure-label">🛡️ Ambiente demonstrativo</div>
+
+    </div>
+
+    <nav class="nav" aria-label="Menu principal">
+      <div class="container nav-inner">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="contato.html">Contato</a>
+        <a href="pagamento.html">Pagamento</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- TÍTULO -->
+    <section class="page-heading">
+      <span class="eyebrow">Finalização demonstrativa</span>
+      <h1>Pagamento</h1>
+      <p>
+        Confira o resumo do pedido e selecione a forma de pagamento
+        que deseja utilizar.
+      </p>
+    </section>
+
+    <!-- ETAPAS -->
+    <div class="steps" aria-label="Etapas do pedido">
+      <div class="step">
+        <span class="step-number">1</span>
+        <span>Pedido</span>
+      </div>
+
+      <span class="step-line"></span>
+
+      <div class="step active">
+        <span class="step-number">2</span>
+        <span>Pagamento</span>
+      </div>
+
+      <span class="step-line"></span>
+
+      <div class="step">
+        <span class="step-number">3</span>
+        <span>Confirmação</span>
+      </div>
+    </div>
+
+    <div class="checkout-layout">
+
+      <!-- COLUNA PRINCIPAL -->
+      <div class="main-column">
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div class="heading-icon">💳</div>
+            <div>
+              <h2>Escolha a forma de pagamento</h2>
+              <p>Selecione uma das opções abaixo.</p>
+            </div>
+          </div>
+
+          <div class="payment-options">
+
+            <label class="payment-option">
+              <input type="radio" name="payment" value="pix" checked>
+
+              <span class="method-icon">⚡</span>
+
+              <span class="method-details">
+                <strong>PIX</strong>
+                <small>Pagamento instantâneo</small>
+              </span>
+
+              <span class="method-status">Disponível após integração</span>
+            </label>
+
+            <label class="payment-option">
+              <input type="radio" name="payment" value="credito">
+
+              <span class="method-icon">💳</span>
+
+              <span class="method-details">
+                <strong>Cartão de crédito</strong>
+                <small>Consulte as condições do vendedor</small>
+              </span>
+            </label>
+
+            <label class="payment-option">
+              <input type="radio" name="payment" value="debito">
+
+              <span class="method-icon">🏦</span>
+
+              <span class="method-details">
+                <strong>Cartão de débito</strong>
+                <small>Conforme as opções do vendedor</small>
+              </span>
+            </label>
+
+            <label class="payment-option">
+              <input type="radio" name="payment" value="boleto">
+
+              <span class="method-icon">📄</span>
+
+              <span class="method-details">
+                <strong>Boleto bancário</strong>
+                <small>Disponibilidade sujeita ao vendedor</small>
+              </span>
+            </label>
+
+          </div>
+
+          <div class="payment-details" id="paymentDetails" aria-live="polite">
+            <h3 id="detailsTitle">Pagamento via PIX</h3>
+            <p id="detailsText">
+              A integração com um provedor de pagamentos é necessária
+              para gerar um código PIX válido.
+            </p>
+          </div>
+
+          <div class="notice" id="paymentNotice" role="status"></div>
+
+          <button class="primary-button" type="button" id="confirmButton">
+            Continuar
+          </button>
+
+          <p class="disclaimer">
+            Esta página é uma demonstração e não recebe pagamentos.
+            Não informe dados bancários ou de cartão aqui.
+          </p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div class="heading-icon">🔒</div>
+            <div>
+              <h2>Privacidade e segurança</h2>
+              <p>Cuide dos seus dados durante suas compras.</p>
+            </div>
+          </div>
+
+          <p style="font-size:13px;color:#66736b;">
+            Quando você compra por um link de afiliado, o pagamento
+            geralmente é realizado no ambiente da loja parceira.
+            Confira o endereço do site, o nome do vendedor e as
+            condições de compra antes de concluir.
+          </p>
+        </section>
+
+      </div>
+
+      <!-- RESUMO DO PEDIDO -->
+      <aside class="panel summary-panel">
+        <h2 class="summary-title">Resumo do pedido</h2>
+
+        <div class="product-summary">
+          <div class="product-icon">🛍️</div>
+
+          <div>
+            <h3 id="productName">Produto demonstrativo</h3>
+            <p>Quantidade: 1</p>
+          </div>
+        </div>
+
+        <div class="summary-lines">
+
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <strong id="subtotal">R$ 0,00</strong>
+          </div>
+
+          <div class="summary-line">
+            <span>Frete</span>
+            <strong id="shipping">A consultar</strong>
+          </div>
+
+          <div class="summary-line total-line">
+            <span>Total estimado</span>
+            <strong class="total-value" id="total">A consultar</strong>
+          </div>
+
+        </div>
+
+        <div class="summary-note">
+          O preço final, o frete e as condições de pagamento devem
+          ser confirmados na loja responsável pela venda.
+        </div>
+
+        <a class="secondary-link" href="produtos.html">
+          ← Voltar para os produtos
+        </a>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+
+      <p>
+        © <span id="currentYear"></span> Nossa Vitrine.
+        Todos os direitos reservados.
+      </p>
+
+      <div class="footer-links">
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="termos.html">Termos de uso</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // ===== ATUALIZAR ANO =====
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    // ===== RESUMO OPCIONAL DO PRODUTO =====
+    // A página pode receber dados pela URL:
+    // pagamento.html?produto=Nome&valor=99.90
+    // Estes dados servem apenas para exibição e não validam uma compra.
+
+    const parametros = new URLSearchParams(window.location.search);
+    const nomeRecebido = parametros.get("produto");
+    const valorRecebido = Number(parametros.get("valor"));
+
+    const formatarMoeda = function (valor) {
+      return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    };
+
+    if (nomeRecebido) {
+      document.getElementById("productName").textContent =
+        nomeRecebido.slice(0, 100);
+    }
+
+    if (
+      parametros.has("valor") &&
+      parametros.get("valor").trim() !== "" &&
+      Number.isFinite(valorRecebido) &&
+      valorRecebido >= 0
+    ) {
+      document.getElementById("subtotal").textContent =
+        formatarMoeda(valorRecebido);
+
+      document.getElementById("total").textContent =
+        formatarMoeda(valorRecebido);
+    }
+
+    // ===== MÉTODOS DE PAGAMENTO =====
+    const detailsTitle = document.getElementById("detailsTitle");
+    const detailsText = document.getElementById("detailsText");
+    const paymentNotice = document.getElementById("paymentNotice");
+    const confirmButton = document.getElementById("confirmButton");
+
+    const paymentMessages = {
+      pix: {
+        title: "Pagamento via PIX",
+        text: "A integração com um provedor de pagamentos é necessária para gerar um código PIX válido."
+      },
+      credito: {
+        title: "Cartão de crédito",
+        text: "Para aceitar cartões, conecte um provedor de pagamentos seguro. Não digite os dados do cartão nesta página."
+      },
+      debito: {
+        title: "Cartão de débito",
+        text: "A disponibilidade depende do provedor de pagamentos e da loja responsável pela venda."
+      },
+      boleto: {
+        title: "Boleto bancário",
+        text: "Um boleto válido precisa ser gerado por um provedor de pagamentos autorizado."
+      }
+    };
+
+    document.querySelectorAll('input[name="payment"]').forEach(
+      function (radio) {
+        radio.addEventListener("change", function () {
+          const mensagem = paymentMessages[radio.value];
+
+          detailsTitle.textContent = mensagem.title;
+          detailsText.textContent = mensagem.text;
+
+          paymentNotice.classList.remove("show");
+          paymentNotice.textContent = "";
+        }
+      );
+    });
+
+    // ===== CONTINUAR =====
+    confirmButton.addEventListener("click", function () {
+      const selecionado = document.querySelector(
+        'input[name="payment"]:checked'
+      );
+
+      if (!selecionado) {
+        paymentNotice.textContent =
+          "Selecione uma forma de pagamento para continuar.";
+
+        paymentNotice.classList.add("show");
+        return;
+      }
+
+      paymentNotice.textContent =
+        "A opção foi selecionada, mas a finalização ainda não está " +
+        "disponível. É necessário integrar um provedor de pagamentos " +
+        "e conectar esta página ao processo real de compra.";
+
+      paymentNotice.classList.add("show");
+    });
+  </script>
+
+</body>
+</html>

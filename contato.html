@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contato | Nossa Vitrine</title>
+  <meta name="description" content="Entre em contato com a equipe da Nossa Vitrine. Estamos aqui para ajudar.">
+
+  <style>
+    :root {
+      --verde: #168447;
+      --verde-escuro: #106536;
+      --verde-claro: #eaf7ee;
+      --fundo: #f5f8f6;
+      --texto: #25352b;
+      --cinza: #66736b;
+      --borda: #dfe8e1;
+      --branco: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1080px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    /* CABEÇALHO */
+
+    .topo {
+      background: var(--branco);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .topo-conteudo {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    .logo {
+      color: var(--verde);
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--texto);
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .menu a {
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .menu a:hover,
+    .menu a.ativo {
+      background: var(--verde-claro);
+      color: var(--verde-escuro);
+    }
+
+    /* APRESENTAÇÃO */
+
+    .hero {
+      padding: 55px 0 35px;
+      text-align: center;
+    }
+
+    .etiqueta {
+      display: inline-block;
+      background: var(--verde-claro);
+      color: var(--verde-escuro);
+      border-radius: 30px;
+      padding: 6px 15px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 43px);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span {
+      color: var(--verde);
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--cinza);
+      font-size: 16px;
+    }
+
+    /* CONTEÚDO */
+
+    .conteudo {
+      padding: 15px 0 65px;
+    }
+
+    .grade {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    .cartao {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 8px 25px rgba(20, 60, 35, 0.04);
+    }
+
+    .cartao h2 {
+      font-size: 22px;
+      margin-bottom: 9px;
+    }
+
+    .descricao {
+      color: var(--cinza);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    /* INFORMAÇÕES DE CONTATO */
+
+    .item-contato {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .icone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      background: var(--verde-claro);
+      border-radius: 12px;
+      font-size: 22px;
+    }
+
+    .item-contato h3 {
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .item-contato p {
+      color: var(--cinza);
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .botao-whatsapp {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      width: 100%;
+      padding: 14px 18px;
+      background: #168447;
+      color: white;
+      border-radius: 10px;
+      font-weight: 700;
+      text-align: center;
+      transition: 0.2s;
+      margin-top: 8px;
+    }
+
+    .botao-whatsapp:hover {
+      background: var(--verde-escuro);
+      transform: translateY(-1px);
+    }
+
+    .aviso {
+      font-size: 12px;
+      color: var(--cinza);
+      margin-top: 12px;
+    }
+
+    /* FORMULÁRIO */
+
+    .campo {
+      margin-bottom: 17px;
+    }
+
+    .campo label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .campo input,
+    .campo select,
+    .campo textarea {
+      display: block;
+      width: 100%;
+      border: 1px solid #d5dfd7;
+      background: #fff;
+      border-radius: 9px;
+      padding: 13px 14px;
+      font: inherit;
+      font-size: 14px;
+      color: var(--texto);
+      outline: none;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    .campo input:focus,
+    .campo select:focus,
+    .campo textarea:focus {
+      border-color: var(--verde);
+      box-shadow: 0 0 0 3px rgba(22, 132, 71, 0.1);
+    }
+
+    .campo textarea {
+      min-height: 135px;
+      resize: vertical;
+    }
+
+    .botao-enviar {
+      width: 100%;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 10px;
+      background: var(--verde);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .botao-enviar:hover {
+      background: var(--verde-escuro);
+    }
+
+    .mensagem {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 9px;
+      background: var(--verde-claro);
+      color: var(--verde-escuro);
+      font-size: 14px;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+      background: #143b26;
+      color: #fff;
+      padding: 28px 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #dcebe0;
+      margin: 4px 0;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* CELULARES E TABLETS */
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 28px, 560px);
+      }
+
+      .topo-conteudo {
+        justify-content: center;
+        text-align: center;
+        gap: 12px;
+      }
+
+      .logo {
+        font-size: 25px;
+      }
+
+      .menu {
+        gap: 4px;
+      }
+
+      .menu a {
+        padding: 8px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 38px 0 25px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .grade {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .cartao {
+        padding: 22px 18px;
+      }
+
+      .conteudo {
+        padding-bottom: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topo">
+    <div class="container topo-conteudo">
+
+      <a class="logo" href="index.html">
+        Nossa <span>Vitrine</span>
+      </a>
+
+      <nav class="menu" aria-label="Menu principal">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="contato.html" class="ativo">Contato</a>
+        <a href="pagamento.html">Pagamento</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero container">
+      <span class="etiqueta">ESTAMOS AQUI PARA AJUDAR</span>
+
+      <h1>Entre em <span>contato</span></h1>
+
+      <p>
+        Tem alguma dúvida, sugestão ou precisa de ajuda?
+        Envie sua mensagem. Será um prazer atender você.
+      </p>
+    </section>
+
+    <section class="conteudo">
+      <div class="container grade">
+
+        <!-- COLUNA DE INFORMAÇÕES -->
+
+        <section class="cartao">
+          <h2>Fale com a gente</h2>
+
+          <p class="descricao">
+            Escolha a forma de contato que for mais conveniente para você.
+          </p>
+
+          <div class="item-contato">
+            <div class="icone">💬</div>
+            <div>
+              <h3>WhatsApp</h3>
+              <p>Fale conosco diretamente pelo WhatsApp.</p>
+            </div>
+          </div>
+
+          <div class="item-contato">
+            <div class="icone">✉️</div>
+            <div>
+              <h3>E-mail</h3>
+              <p>Você pode nos escrever por e-mail.</p>
+            </div>
+          </div>
+
+          <div class="item-contato">
+            <div class="icone">🛍️</div>
+            <div>
+              <h3>Ajuda com produtos</h3>
+              <p>
+                Tire dúvidas sobre os produtos e os links disponíveis na vitrine.
+              </p>
+            </div>
+          </div>
+
+          <!-- SUBSTITUA PELO SEU NÚMERO -->
+          <a
+            class="botao-whatsapp"
+            href="https://wa.me/5500000000000"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>☏</span> Conversar pelo WhatsApp
+          </a>
+
+          <p class="aviso">
+            Antes de publicar, substitua o número do WhatsApp pelo seu número
+            com código do país e DDD.
+          </p>
+        </section>
+
+        <!-- COLUNA DO FORMULÁRIO -->
+
+        <section class="cartao">
+          <h2>Envie uma mensagem</h2>
+
+          <p class="descricao">
+            Preencha os campos abaixo para preparar sua mensagem.
+          </p>
+
+          <form id="formContato">
+
+            <div class="campo">
+              <label for="nome">Seu nome</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Digite seu nome"
+                autocomplete="name"
+                required
+              >
+            </div>
+
+            <div class="campo">
+              <label for="email">Seu e-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="voce@exemplo.com"
+                autocomplete="email"
+                required
+              >
+            </div>
+
+            <div class="campo">
+              <label for="assunto">Assunto</label>
+              <select id="assunto" name="assunto" required>
+                <option value="">Selecione um assunto</option>
+                <option value="Dúvida sobre produto">Dúvida sobre produto</option>
+                <option value="Problema com link">Problema com link</option>
+                <option value="Sugestão">Sugestão</option>
+                <option value="Parceria comercial">Parceria comercial</option>
+                <option value="Outro assunto">Outro assunto</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="mensagem">Sua mensagem</label>
+              <textarea
+                id="mensagem"
+                name="mensagem"
+                placeholder="Escreva sua mensagem aqui..."
+                required
+              ></textarea>
+            </div>
+
+            <button class="botao-enviar" type="submit">
+              Enviar pelo WhatsApp
+            </button>
+
+            <div
+              class="mensagem"
+              id="avisoFormulario"
+              role="status"
+              aria-live="polite"
+            ></div>
+
+          </form>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Nossa Vitrine</strong> — Encontre tudo em um só lugar.</p>
+      <p>© <span id="ano"></span> Nossa Vitrine. Todos os direitos reservados.</p>
+      <p>
+        <a href="privacidade.html">Privacidade</a> |
+        <a href="termos.html">Termos de uso</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Atualiza o ano automaticamente
+    document.getElementById("ano").textContent =
+      new Date().getFullYear();
+
+    // Número de destino: substitua pelo seu número real.
+    // Use código do país + DDD + número, somente dígitos.
+    const numeroWhatsApp = "5500000000000";
+
+    document.getElementById("formContato").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const assunto = document.getElementById("assunto").value;
+      const mensagem = document.getElementById("mensagem").value.trim();
+      const aviso = document.getElementById("avisoFormulario");
+
+      if (!nome || !email || !assunto || !mensagem) {
+        aviso.style.display = "block";
+        aviso.textContent = "Preencha todos os campos antes de continuar.";
+        return;
+      }
+
+      if (numeroWhatsApp === "5500000000000") {
+        aviso.style.display = "block";
+        aviso.textContent =
+          "O formulário está pronto! Para enviar mensagens, configure seu número de WhatsApp no código.";
+        return;
+      }
+
+      const texto =
+        "Olá, Nossa Vitrine!%0A%0A" +
+        "Nome: " + encodeURIComponent(nome) + "%0A" +
+        "E-mail: " + encodeURIComponent(email) + "%0A" +
+        "Assunto: " + encodeURIComponent(assunto) + "%0A" +
+        "Mensagem: " + encodeURIComponent(mensagem);
+
+      const link =
+        "https://wa.me/" + numeroWhatsApp + "?text=" + texto;
+
+      window.open(link, "_blank", "noopener,noreferrer");
+
+      aviso.style.display = "block";
+      aviso.textContent =
+        "O WhatsApp foi aberto para você revisar e enviar a mensagem.";
+    });
+  </script>
+
+</body>
+</html>
