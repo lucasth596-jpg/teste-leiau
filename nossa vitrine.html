@@ -1,0 +1,1556 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nossa Vitrine | Encontre tudo em um só lugar</title>
+
+  <meta name="description" content="Descubra produtos, ofertas e novidades na Nossa Vitrine. Encontre tudo em um só lugar.">
+  <meta name="theme-color" content="#087443">
+
+  <style>
+    /* ===== CONFIGURAÇÕES GERAIS ===== */
+    :root {
+      --verde: #087443;
+      --verde-escuro: #065b35;
+      --verde-claro: #e8f6ed;
+      --azul: #155eef;
+      --fundo: #f6f8f7;
+      --texto: #202b25;
+      --cinza: #66736b;
+      --branco: #ffffff;
+      --borda: #e3e9e5;
+      --sombra: 0 8px 28px rgba(20, 50, 30, 0.07);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #79b8ff;
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    /* ===== BARRA SUPERIOR ===== */
+    .topbar {
+      background: var(--verde-escuro);
+      color: white;
+      text-align: center;
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    /* ===== CABEÇALHO ===== */
+    .header {
+      background: white;
+      border-bottom: 1px solid var(--borda);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-main {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--verde);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .brand-name {
+      color: var(--verde);
+      font-size: 23px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      color: var(--cinza);
+      letter-spacing: 0.5px;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      max-width: 470px;
+      flex: 1;
+      border: 1px solid var(--borda);
+      border-radius: 12px;
+      background: #f9fbf9;
+      padding: 4px;
+    }
+
+    .search input {
+      width: 100%;
+      min-width: 0;
+      border: none;
+      outline: none;
+      padding: 11px;
+      background: transparent;
+      color: var(--texto);
+    }
+
+    .search button {
+      border: none;
+      border-radius: 9px;
+      background: var(--verde);
+      color: white;
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+
+    .account-link {
+      color: var(--verde);
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* ===== NAVEGAÇÃO ===== */
+    .nav {
+      border-top: 1px solid #f0f2f0;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 34px;
+      min-height: 48px;
+    }
+
+    .nav a {
+      padding: 13px 0;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--verde);
+    }
+
+    .menu-button {
+      display: none;
+      border: 1px solid var(--borda);
+      background: white;
+      color: var(--verde);
+      border-radius: 9px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    /* ===== BANNER PRINCIPAL ===== */
+    .hero {
+      padding: 36px 0 28px;
+    }
+
+    .hero-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      min-height: 340px;
+      background:
+        radial-gradient(circle at 85% 20%, #50bd83 0, transparent 30%),
+        linear-gradient(120deg, #075b36, #0b8b50);
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 48px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 30px;
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4.5vw, 52px);
+      line-height: 1.12;
+      margin-bottom: 18px;
+      letter-spacing: -1.2px;
+    }
+
+    .hero p {
+      max-width: 490px;
+      font-size: 16px;
+      color: #e8f8ee;
+      margin-bottom: 27px;
+    }
+
+    .primary-button {
+      display: inline-block;
+      background: white;
+      color: var(--verde-escuro);
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-2px);
+      background: #eaf7ee;
+    }
+
+    .hero-decoration {
+      position: absolute;
+      right: 7%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 235px;
+      height: 235px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.10);
+      display: grid;
+      place-items: center;
+      font-size: 115px;
+    }
+
+    /* ===== BENEFÍCIOS ===== */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 10px auto 48px;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px;
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+    }
+
+    .benefit-icon {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      background: var(--verde-claro);
+      border-radius: 12px;
+      font-size: 23px;
+    }
+
+    .benefit h3 {
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .benefit p {
+      color: var(--cinza);
+      font-size: 12px;
+    }
+
+    /* ===== TÍTULOS DAS SEÇÕES ===== */
+    .section {
+      padding: 12px 0 52px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      color: var(--verde);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(24px, 3vw, 32px);
+      line-height: 1.25;
+      margin-top: 5px;
+    }
+
+    .section-heading p {
+      color: var(--cinza);
+      font-size: 14px;
+      margin-top: 7px;
+    }
+
+    /* ===== CATEGORIAS ===== */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .category {
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      padding: 24px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .category:hover {
+      transform: translateY(-4px);
+      border-color: #91cbaa;
+    }
+
+    .category-icon {
+      width: 66px;
+      height: 66px;
+      margin: 0 auto 12px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: var(--verde-claro);
+      font-size: 31px;
+    }
+
+    .category h3 {
+      font-size: 15px;
+    }
+
+    .category p {
+      color: var(--cinza);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    /* ===== PRODUTOS ===== */
+    .product-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .filter-button {
+      border: 1px solid var(--borda);
+      background: white;
+      border-radius: 30px;
+      padding: 8px 15px;
+      color: var(--texto);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .filter-button.active,
+    .filter-button:hover {
+      background: var(--verde);
+      color: white;
+      border-color: var(--verde);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sombra);
+    }
+
+    .product-image {
+      height: 195px;
+      background: #f0f5f1;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 12px;
+    }
+
+    .product-placeholder {
+      font-size: 66px;
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--verde);
+      color: white;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 5px 8px;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+      padding: 17px;
+    }
+
+    .product-category {
+      color: var(--verde);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-size: 10px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .product-info h3 {
+      font-size: 15px;
+      line-height: 1.4;
+      margin-bottom: 9px;
+    }
+
+    .product-description {
+      color: var(--cinza);
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    .product-button {
+      display: block;
+      width: 100%;
+      margin-top: auto;
+      padding: 11px 8px;
+      border-radius: 9px;
+      background: var(--verde);
+      color: white;
+      text-align: center;
+      font-size: 13px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .product-button:hover {
+      background: var(--verde-escuro);
+    }
+
+    .empty-message {
+      display: none;
+      padding: 35px 10px;
+      text-align: center;
+      color: var(--cinza);
+      grid-column: 1 / -1;
+    }
+
+    /* ===== FAIXA DE DESTAQUE ===== */
+    .promo {
+      margin-bottom: 54px;
+      border-radius: 18px;
+      padding: 32px;
+      background: #e5f5ea;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .promo h2 {
+      font-size: 24px;
+      color: var(--verde-escuro);
+      margin-bottom: 6px;
+    }
+
+    .promo p {
+      color: #496653;
+      font-size: 14px;
+    }
+
+    .promo-button {
+      flex-shrink: 0;
+      background: var(--verde);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* ===== SOBRE A LOJA ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .about-art {
+      min-height: 270px;
+      background: linear-gradient(135deg, #d9f2e2, #f1faf4);
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 105px;
+    }
+
+    .about-copy h2 {
+      font-size: 30px;
+      line-height: 1.25;
+      margin: 8px 0 16px;
+    }
+
+    .about-copy p {
+      color: var(--cinza);
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .about-link {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--verde);
+      font-weight: bold;
+    }
+
+    /* ===== NEWSLETTER ===== */
+    .newsletter {
+      background: var(--verde-escuro);
+      color: white;
+      padding: 40px 0;
+      margin-top: 30px;
+    }
+
+    .newsletter-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .newsletter h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .newsletter p {
+      color: #d6eadc;
+      font-size: 13px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      width: min(430px, 100%);
+    }
+
+    .newsletter-form input {
+      min-width: 0;
+      flex: 1;
+      padding: 13px;
+      border: none;
+      border-radius: 9px;
+    }
+
+    .newsletter-form button {
+      border: none;
+      border-radius: 9px;
+      padding: 12px 16px;
+      background: white;
+      color: var(--verde-escuro);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* ===== RODAPÉ ===== */
+    .footer {
+      background: #10251a;
+      color: white;
+      padding: 42px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 30px;
+    }
+
+    .footer .brand-name {
+      color: white;
+    }
+
+    .footer .brand-subtitle {
+      color: #c1d1c6;
+    }
+
+    .footer-description {
+      color: #c1d1c6;
+      font-size: 13px;
+      max-width: 330px;
+      margin-top: 16px;
+    }
+
+    .footer h3 {
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 9px;
+    }
+
+    .footer-links a {
+      color: #c1d1c6;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #304638;
+      padding-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      color: #c1d1c6;
+      font-size: 12px;
+    }
+
+    .footer-note {
+      margin-top: 12px;
+      color: #c1d1c6;
+      font-size: 11px;
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
+    @media (max-width: 900px) {
+      .header-main {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .search {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero-decoration {
+        right: 4%;
+        width: 170px;
+        height: 170px;
+        font-size: 80px;
+      }
+
+      .hero-content {
+        max-width: 65%;
+      }
+
+      .benefits {
+        gap: 10px;
+      }
+
+      .benefit {
+        padding: 14px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 92%;
+      }
+
+      .topbar {
+        font-size: 11px;
+      }
+
+      .header-main {
+        min-height: 74px;
+      }
+
+      .brand-logo {
+        width: 40px;
+        height: 40px;
+        font-size: 21px;
+      }
+
+      .brand-name {
+        font-size: 19px;
+      }
+
+      .account-link {
+        font-size: 12px;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-inner {
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 0 14px;
+      }
+
+      .nav-inner.open {
+        display: flex;
+      }
+
+      .nav a {
+        padding: 10px 4px;
+        border-bottom: 1px solid #f0f2f0;
+      }
+
+      .hero {
+        padding-top: 22px;
+      }
+
+      .hero-box {
+        min-height: 360px;
+        padding: 30px 23px;
+        align-items: flex-start;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+        max-width: 390px;
+      }
+
+      .hero p {
+        font-size: 14px;
+        max-width: 320px;
+      }
+
+      .hero-decoration {
+        width: 100px;
+        height: 100px;
+        top: auto;
+        bottom: 15px;
+        right: 15px;
+        transform: none;
+        font-size: 48px;
+        opacity: 0.7;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+        margin-bottom: 38px;
+      }
+
+      .benefit {
+        padding: 13px;
+      }
+
+      .section {
+        padding-bottom: 38px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .categories {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .category {
+        padding: 18px 10px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .product-image {
+        height: 145px;
+      }
+
+      .product-info {
+        padding: 12px;
+      }
+
+      .product-info h3 {
+        font-size: 13px;
+      }
+
+      .product-description {
+        font-size: 11px;
+      }
+
+      .product-button {
+        font-size: 12px;
+      }
+
+      .product-tools {
+        gap: 6px;
+      }
+
+      .filter-button {
+        padding: 7px 11px;
+        font-size: 12px;
+      }
+
+      .promo {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 25px 20px;
+        margin-bottom: 40px;
+      }
+
+      .promo h2 {
+        font-size: 21px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .about-art {
+        min-height: 190px;
+        font-size: 75px;
+      }
+
+      .about-copy h2 {
+        font-size: 26px;
+      }
+
+      .newsletter-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form button {
+        padding: 13px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 18px;
+      }
+
+      .footer-brand-column {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- AVISO SUPERIOR -->
+  <div class="topbar">
+    Nossa Vitrine — encontre produtos para o seu dia a dia.
+  </div>
+
+  <!-- CABEÇALHO -->
+  <header class="header">
+    <div class="container header-main">
+
+      <a href="index.html" class="brand" aria-label="Nossa Vitrine - Página inicial">
+        <div class="brand-logo">N</div>
+        <div>
+          <div class="brand-name">Nossa Vitrine</div>
+          <div class="brand-subtitle">ENCONTRE TUDO EM UM SÓ LUGAR</div>
+        </div>
+      </a>
+
+      <form class="search" id="searchForm" role="search">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="O que você está procurando?"
+          aria-label="Pesquisar produtos"
+        >
+        <button type="submit">Buscar</button>
+      </form>
+
+      <a class="account-link" href="contato.html">Minha conta</a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        ☰ Menu
+      </button>
+
+    </div>
+
+    <nav class="nav" aria-label="Menu principal">
+      <div class="container nav-inner" id="navLinks">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="#categorias">Categorias</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="contato.html">Contato</a>
+        <a href="pagamento.html">Pagamento</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- BANNER PRINCIPAL -->
+    <section class="hero container" aria-label="Apresentação da loja">
+      <div class="hero-box">
+        <div class="hero-content">
+          <span class="hero-label">BEM-VINDO À NOSSA VITRINE</span>
+
+          <h1>Encontre tudo em um só lugar.</h1>
+
+          <p>
+            Explore nossa seleção de produtos, conheça novidades
+            e encontre opções para facilitar o seu dia a dia.
+          </p>
+
+          <a href="#produtos" class="primary-button">
+            Explorar produtos →
+          </a>
+        </div>
+
+        <div class="hero-decoration" aria-hidden="true">🛍️</div>
+      </div>
+    </section>
+
+    <!-- BENEFÍCIOS -->
+    <section class="container benefits" aria-label="Informações da loja">
+
+      <div class="benefit">
+        <div class="benefit-icon" aria-hidden="true">🔎</div>
+        <div>
+          <h3>Produtos selecionados</h3>
+          <p>Descubra opções para diferentes necessidades.</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <div class="benefit-icon" aria-hidden="true">🔗</div>
+        <div>
+          <h3>Links para as lojas</h3>
+          <p>Consulte os detalhes diretamente no vendedor.</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <div class="benefit-icon" aria-hidden="true">💚</div>
+        <div>
+          <h3>Praticidade para você</h3>
+          <p>Encontre produtos em uma única vitrine.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section class="section container" id="categorias">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Explore</span>
+          <h2>Compre por categoria</h2>
+          <p>Escolha uma categoria para encontrar o que procura.</p>
+        </div>
+      </div>
+
+      <div class="categories">
+
+        <button class="category" type="button" data-category="casa">
+          <div class="category-icon" aria-hidden="true">🏠</div>
+          <h3>Casa e decoração</h3>
+          <p>Conforto para sua casa</p>
+        </button>
+
+        <button class="category" type="button" data-category="tecnologia">
+          <div class="category-icon" aria-hidden="true">🎧</div>
+          <h3>Tecnologia</h3>
+          <p>Acessórios e eletrônicos</p>
+        </button>
+
+        <button class="category" type="button" data-category="moda">
+          <div class="category-icon" aria-hidden="true">👕</div>
+          <h3>Moda e acessórios</h3>
+          <p>Estilo para o dia a dia</p>
+        </button>
+
+        <button class="category" type="button" data-category="utilidades">
+          <div class="category-icon" aria-hidden="true">🛠️</div>
+          <h3>Utilidades</h3>
+          <p>Itens para facilitar a rotina</p>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- VITRINE DE PRODUTOS -->
+    <section class="section container" id="produtos">
+
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Nossa seleção</span>
+          <h2>Produtos em destaque</h2>
+          <p>Conheça alguns exemplos da nossa vitrine.</p>
+        </div>
+      </div>
+
+      <div class="product-tools" aria-label="Filtrar produtos">
+        <button class="filter-button active" data-filter="todos" type="button">
+          Todos
+        </button>
+        <button class="filter-button" data-filter="casa" type="button">
+          Casa
+        </button>
+        <button class="filter-button" data-filter="tecnologia" type="button">
+          Tecnologia
+        </button>
+        <button class="filter-button" data-filter="moda" type="button">
+          Moda
+        </button>
+        <button class="filter-button" data-filter="utilidades" type="button">
+          Utilidades
+        </button>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+
+        <!-- PRODUTO 1 -->
+        <article class="product-card"
+          data-category="tecnologia"
+          data-name="fone de ouvido sem fio bluetooth">
+
+          <div class="product-image">
+            <span class="product-placeholder" aria-hidden="true">🎧</span>
+            <span class="product-tag">DESTAQUE</span>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Tecnologia</span>
+            <h3>Fone de ouvido sem fio</h3>
+            <p class="product-description">
+              Uma opção de acessório para ouvir suas músicas.
+            </p>
+            <a class="product-button" href="https://shopee.com.br/"
+              target="_blank" rel="noopener noreferrer sponsored">
+              Ver na loja →
+            </a>
+          </div>
+        </article>
+
+        <!-- PRODUTO 2 -->
+        <article class="product-card"
+          data-category="casa"
+          data-name="luminária decoração iluminação">
+
+          <div class="product-image">
+            <span class="product-placeholder" aria-hidden="true">💡</span>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Casa</span>
+            <h3>Luminária decorativa</h3>
+            <p class="product-description">
+              Uma ideia para complementar a iluminação do ambiente.
+            </p>
+            <a class="product-button" href="https://shopee.com.br/"
+              target="_blank" rel="noopener noreferrer sponsored">
+              Ver na loja →
+            </a>
+          </div>
+        </article>
+
+        <!-- PRODUTO 3 -->
+        <article class="product-card"
+          data-category="moda"
+          data-name="mochila casual bolsa acessórios">
+
+          <div class="product-image">
+            <span class="product-placeholder" aria-hidden="true">🎒</span>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Moda</span>
+            <h3>Mochila para o dia a dia</h3>
+            <p class="product-description">
+              Uma opção prática para transportar seus objetos.
+            </p>
+            <a class="product-button" href="https://shopee.com.br/"
+              target="_blank" rel="noopener noreferrer sponsored">
+              Ver na loja →
+            </a>
+          </div>
+        </article>
+
+        <!-- PRODUTO 4 -->
+        <article class="product-card"
+          data-category="utilidades"
+          data-name="garrafa térmica água utilidades">
+
+          <div class="product-image">
+            <span class="product-placeholder" aria-hidden="true">🥤</span>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Utilidades</span>
+            <h3>Garrafa para bebidas</h3>
+            <p class="product-description">
+              Uma companheira para levar água na rotina.
+            </p>
+            <a class="product-button" href="https://shopee.com.br/"
+              target="_blank" rel="noopener noreferrer sponsored">
+              Ver na loja →
+            </a>
+          </div>
+        </article>
+
+        <!-- PRODUTO 5 -->
+        <article class="product-card"
+          data-category="casa"
+          data-name="organizador caixas organização casa">
+
+          <div class="product-image">
+            <span class="product-placeholder" aria-hidden="true">🧺</span>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Casa</span>
+            <h3>Organizador para casa</h3>
+            <p class="product-description">
+              Uma alternativa para manter seus objetos organizados.
+            </p>
+            <a class="product-button" href="https://shopee.com.br/"
+              target="_blank" rel="noopener noreferrer sponsored">
+              Ver na loja →
+            </a>
+          </div>
+        </article>
+
+        <!-- PRODUTO 6 -->
+        <article class="product-card"
+          data-category="tecnologia"
+          data-name="suporte celular smartphone">
+
+          <div class="product-image">
+            <span class="product-placeholder" aria-hidden="true">📱</span>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Tecnologia</span>
+            <h3>Suporte para celular</h3>
+            <p class="product-description">
+              Um acessório útil para apoiar seu smartphone.
+            </p>
+            <a class="product-button" href="https://shopee.com.br/"
+              target="_blank" rel="noopener noreferrer sponsored">
+              Ver na loja →
+            </a>
+          </div>
+        </article>
+
+        <!-- PRODUTO 7 -->
+        <article class="product-card"
+          data-category="moda"
+          data-name="carteira masculina feminina acessórios">
+
+          <div class="product-image">
+            <span class="product-placeholder" aria-hidden="true">👛</span>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Moda</span>
+            <h3>Carteira compacta</h3>
+            <p class="product-description">
+              Uma opção de acessório para guardar seus pertences.
+            </p>
+            <a class="product-button" href="https://shopee.com.br/"
+              target="_blank" rel="noopener noreferrer sponsored">
+              Ver na loja →
+            </a>
+          </div>
+        </article>
+
+        <!-- PRODUTO 8 -->
+        <article class="product-card"
+          data-category="utilidades"
+          data-name="ferramentas kit ferramentas utilidades">
+
+          <div class="product-image">
+            <span class="product-placeholder" aria-hidden="true">🧰</span>
+          </div>
+
+          <div class="product-info">
+            <span class="product-category">Utilidades</span>
+            <h3>Kit de ferramentas</h3>
+            <p class="product-description">
+              Uma opção para pequenos trabalhos e reparos.
+            </p>
+            <a class="product-button" href="https://shopee.com.br/"
+              target="_blank" rel="noopener noreferrer sponsored">
+              Ver na loja →
+            </a>
+          </div>
+        </article>
+
+        <p class="empty-message" id="emptyMessage">
+          Nenhum produto encontrado. Tente outra pesquisa ou categoria.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- DESTAQUE -->
+    <section class="container">
+      <div class="promo">
+        <div>
+          <h2>Descubra sua próxima compra</h2>
+          <p>Explore nossa seleção e consulte as ofertas nas lojas parceiras.</p>
+        </div>
+        <a href="#produtos" class="promo-button">Ver produtos →</a>
+      </div>
+    </section>
+
+    <!-- SOBRE A NOSSA VITRINE -->
+    <section class="section container" id="sobre">
+      <div class="about-grid">
+
+        <div class="about-art" aria-hidden="true">
+          🛍️
+        </div>
+
+        <div class="about-copy">
+          <span class="eyebrow">Conheça nossa loja</span>
+          <h2>Uma vitrine feita para facilitar suas escolhas.</h2>
+
+          <p>
+            A Nossa Vitrine reúne sugestões de produtos de diferentes
+            categorias em um espaço simples, organizado e fácil de usar.
+          </p>
+
+          <p>
+            Nosso objetivo é ajudar você a descobrir opções e acessar
+            as páginas dos vendedores para consultar preços,
+            características, disponibilidade e condições de compra.
+          </p>
+
+          <a class="about-link" href="sobre.html">
+            Conheça mais sobre nós →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+      <div class="container newsletter-inner">
+
+        <div>
+          <h2>Fique por dentro das novidades</h2>
+          <p>
+            Cadastre seu e-mail para demonstrar interesse em receber novidades.
+          </p>
+        </div>
+
+        <form class="newsletter-form" id="newsletterForm">
+          <input
+            type="email"
+            id="newsletterEmail"
+            placeholder="Seu melhor e-mail"
+            aria-label="Seu e-mail"
+            required
+          >
+          <button type="submit">Cadastrar</button>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand-column">
+          <a href="index.html" class="brand">
+            <div class="brand-logo">N</div>
+            <div>
+              <div class="brand-name">Nossa Vitrine</div>
+              <div class="brand-subtitle">ENCONTRE TUDO EM UM SÓ LUGAR</div>
+            </div>
+          </a>
+
+          <p class="footer-description">
+            Uma vitrine online para descobrir produtos e acessar
+            lojas parceiras com praticidade.
+          </p>
+        </div>
+
+        <div>
+          <h3>Navegação</h3>
+          <div class="footer-links">
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre nós</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="contato.html">Contato</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Informações</h3>
+          <div class="footer-links">
+            <a href="pagamento.html">Pagamento</a>
+            <a href="privacidade.html">Política de privacidade</a>
+            <a href="termos.html">Termos de uso</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>
+          © <span id="currentYear"></span> Nossa Vitrine. Todos os direitos reservados.
+        </span>
+        <span>Desenvolvido com 💚</span>
+      </div>
+
+      <p class="footer-note">
+        Alguns links podem ser de afiliados. Se você comprar por meio
+        de um link de afiliado, a loja parceira poderá pagar uma comissão,
+        sem custo adicional para você. Consulte os termos de cada vendedor.
+      </p>
+
+    </div>
+  </footer>
+
+  <script>
+    // ===== MENU PARA CELULAR =====
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", function () {
+      const aberto = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(aberto));
+      menuButton.textContent = aberto ? "✕ Fechar" : "☰ Menu";
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰ Menu";
+      });
+    });
+
+    // ===== PESQUISA E FILTROS =====
+    const searchForm = document.getElementById("searchForm");
+    const searchInput = document.getElementById("searchInput");
+    const productCards = Array.from(
+      document.querySelectorAll(".product-card")
+    );
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const emptyMessage = document.getElementById("emptyMessage");
+
+    let categoriaAtual = "todos";
+    let pesquisaAtual = "";
+
+    function atualizarProdutos() {
+      let encontrados = 0;
+
+      productCards.forEach(function (card) {
+        const categoria = card.dataset.category;
+        const nome = card.dataset.name || "";
+        const texto = card.innerText.toLowerCase();
+
+        const correspondeCategoria =
+          categoriaAtual === "todos" || categoria === categoriaAtual;
+
+        const correspondePesquisa =
+          (nome + " " + texto).toLowerCase().includes(pesquisaAtual);
+
+        const mostrar = correspondeCategoria && correspondePesquisa;
+
+        card.style.display = mostrar ? "flex" : "none";
+
+        if (mostrar) encontrados++;
+      });
+
+      emptyMessage.style.display = encontrados === 0 ? "block" : "none";
+    }
+
+    function selecionarCategoria(categoria) {
+      categoriaAtual = categoria;
+
+      filterButtons.forEach(function (button) {
+        button.classList.toggle(
+          "active",
+          button.dataset.filter === categoria
+        );
+      });
+
+      atualizarProdutos();
+    }
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        selecionarCategoria(button.dataset.filter);
+      });
+    });
+
+    document.querySelectorAll(".category").forEach(function (button) {
+      button.addEventListener("click", function () {
+        selecionarCategoria(button.dataset.category);
+        document.getElementById("produtos").scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+    });
+
+    searchForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      pesquisaAtual = searchInput.value.trim().toLowerCase();
+      atualizarProdutos();
+      document.getElementById("produtos").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+    searchInput.addEventListener("input", function () {
+      pesquisaAtual = searchInput.value.trim().toLowerCase();
+      atualizarProdutos();
+    });
+
+    // ===== ANO AUTOMÁTICO =====
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    // ===== AVISO DE CADASTRO =====
+    // Este formulário ainda não envia nem armazena e-mails.
+    document.getElementById("newsletterForm").addEventListener(
+      "submit",
+      function (event) {
+        event.preventDefault();
+
+        alert(
+          "O formulário visual está funcionando, mas o cadastro ainda " +
+          "precisa ser conectado a um serviço de e-mail."
+        );
+      }
+    );
+  </script>
+
+</body>
+</html>
